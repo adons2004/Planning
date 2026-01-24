@@ -4,21 +4,19 @@ namespace Planning.Domain;
 
 public class Total : ISku
 {
-    public Total(string name)
+    public Total(List<ISku> skus)
     {
-        Name = name;
+        Name = "TOTAL";
+        _skus = skus;
     }
     
-    public long Uid { get; private set; }
     public string Name { get; private set; }
 
-    public ICollection<SubSku> SubSkus { get; private set; }
-    
     public Parameters GetHistoryY0Parameters() => Calculate(_historyY0, s => s.GetHistoryY0Parameters());
     public Parameters GetPlanningY1Parameters() => Calculate(_planningY1, s => s.GetPlanningY1Parameters());
-    public decimal ContributionGrouth => ((GetPlanningY1Parameters().Amount - GetHistoryY0Parameters().Amount) / GetHistoryY0Parameters().Amount) * 100;
+    public decimal GetContributionGrowth() => ((GetPlanningY1Parameters().Amount - GetHistoryY0Parameters().Amount) / GetHistoryY0Parameters().Amount) * 100;
     
-    private List<SubSku> _subSkus = new ();
+    private readonly List<ISku> _skus = new ();
 
     private Parameters? _historyY0;
     private Parameters? _planningY1;
@@ -30,7 +28,7 @@ public class Total : ISku
             return current;
         }
 
-        var parameters = _subSkus.Select(selector).ToList();
+        var parameters = _skus.Select(selector).ToList();
         
         var units = parameters.Sum(p => p.Units);
         var amount = parameters.Sum(p => p.Amount);

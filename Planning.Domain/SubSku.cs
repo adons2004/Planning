@@ -2,20 +2,35 @@ using Planning.Domain.Contracts;
 
 namespace Planning.Domain;
 
-public class Product : ISku
+public class SubSku : ISku
 {
-    public Product(string name, Parameters historyY0, Parameters planningY1)
+    public SubSku(string name, HistoryY0 historyY0, PlanningY1 planningY1)
     {
         Name = name;
         HistoryY0 = historyY0;
         PlanningY1 = planningY1;
     }
+    public long Uid { get; private set; }
     public string Name { get; }
-    public Parameters HistoryY0 { get; }
-    public Parameters PlanningY1 { get; }
-    public decimal ContributionGrouth => ((PlanningY1.Amount - HistoryY0.Amount) / HistoryY0.Amount) * 100;
-
-    public void Add(ISku sku)
+    public decimal Price { get; private set;}
+    public decimal Ratio { get; private set; }
+    public HistoryY0 HistoryY0 { get; private set; }
+    public PlanningY1 PlanningY1 { get; private set; }
+    
+    
+    public Parameters GetHistoryY0Parameters()
     {
+        var price = HistoryY0.Amount / HistoryY0.Units;
+        
+        return new Parameters(HistoryY0.Units, price);
     }
+
+    public Parameters GetPlanningY1Parameters()
+    {
+        var price = PlanningY1.Amount / PlanningY1.Units;
+
+        return new Parameters(PlanningY1.Units, price);
+    }
+
+    public decimal GetContributionGrowth() => ((PlanningY1.Amount - HistoryY0.Amount) / HistoryY0.Amount) * 100;
 }
