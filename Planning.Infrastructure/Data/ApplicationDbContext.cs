@@ -1,22 +1,26 @@
 using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 using Planning.Domain;
+using Planning.Domain.Contracts;
 
 namespace Planning.Infrastructure.Data;
 
 public class ApplicationDbContext : DbContext
 {
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-        : base(options) { }
+        : base(options)
+    {
+        Database.EnsureCreated();
+    }
 
     public DbSet<Sku> Skus { get; set; }
-    
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        base.OnModelCreating(modelBuilder);
-
         modelBuilder.ApplyConfigurationsFromAssembly(
             Assembly.GetAssembly(typeof(ApplicationDbContext))!
         );
+
+        base.OnModelCreating(modelBuilder);
     }
 }

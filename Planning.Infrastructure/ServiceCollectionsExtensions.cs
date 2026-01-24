@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Planning.Domain.Contracts;
@@ -17,9 +18,7 @@ public static class ServiceCollectionsExtensions
 
     private static IServiceCollection AddData(this IServiceCollection services, IConfiguration configuration)
     {
-        var connection = configuration.GetConnectionString("Database")!;
-
-        //services.AddDbContext<ApplicationDbContext>(options => options!);
+        services.AddDbContext<ApplicationDbContext>(options => options.UseInMemoryDatabase("Planning_db"));
         
         return services;
     }

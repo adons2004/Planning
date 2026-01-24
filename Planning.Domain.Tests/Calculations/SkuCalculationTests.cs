@@ -103,10 +103,10 @@ public class SkuCalculationTests
 
     private Sku DrinksSubSku()
     {
-        var coke = new SubSku("Кола 0.5л", new Parameters(1_000, 80m), new Parameters(1_200, 85.00m));
-        var water = new SubSku("Вода 1.5л", new Parameters(2_000, 40m), new Parameters(2_100, 42.00m));
+        var coke = new SubSku(Guid.Parse("ACE57827-9163-43B5-A928-A5325DF0D3E8"), "Кола 0.5л", new HistoryY0(1_000, 80m), new PlanningY1(1_200, 85.00m));
+        var water = new SubSku(Guid.Parse("6903EC64-BA3D-4247-8F09-391AAC12A7B9"),"Вода 1.5л", new HistoryY0(2_000, 40m), new PlanningY1(2_100, 42.00m));
         
-        var sku = new Sku("Напитки");
+        var sku = new Sku(Guid.Parse("0B1BAB69-C3D8-45A7-9264-AE590EB65E84"),"Напитки");
         sku.Add(coke);
         sku.Add(water);
 
@@ -115,22 +115,22 @@ public class SkuCalculationTests
     
     private Sku FoodsSubSku()
     {
-        var coke = new SubSku("Бургер", new Parameters(1_000, 600m), new Parameters(1_200, 700m ));
-        var water = new SubSku("Картофель-фри", new Parameters(2_000, 190m), new Parameters(2_100, 210m));
+        var coke = new SubSku(Guid.Parse("EC095083-F006-4323-94C7-D467E3637CB7"),"Бургер", new HistoryY0(1_000, 600m), new PlanningY1(1_200, 700m ));
+        var water = new SubSku(Guid.Parse("ADF2C8C4-9BC4-47FE-B66C-49DFFEB71915"),"Картофель-фри", new HistoryY0(2_000, 190m), new PlanningY1(2_100, 210m));
         
-        var sku = new Sku("Еда");
+        var sku = new Sku(Guid.Parse("451F4F7A-010D-485B-B90E-6C23B8E65305"),"Еда");
         sku.Add(coke);
         sku.Add(water);
 
         return sku;
     }
     
-    private Sku TotalSku()
+    private Total TotalSku()
     {
         var drinks = DrinksSubSku();
         var foods = FoodsSubSku();
 
-        var sku = new Sku("TOTAL");
+        var sku = new Total();
         sku.Add(drinks);
         sku.Add(foods);
         
