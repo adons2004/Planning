@@ -10,6 +10,7 @@ public class CalculationResult
     }
     public CalculationResult(AbstractSku sku)
     {
+        Uid = sku.Uid;
         Name = sku.Name;
         HistoryY0 = new HistoryCalculationResult(sku.HistoryY0Params);
         PlanningY1 = new PlanningCalculationResult(sku.PlanningY1Params);
@@ -17,6 +18,7 @@ public class CalculationResult
         Children = sku.Children.Select(c => new CalculationResult(c)).ToArray();
     }
     
+    public Guid Uid { get; set; }
     public string Name { get; set; }
     public CalculationResult[] Children { get; set; }
     public HistoryCalculationResult HistoryY0 { get; set; } 

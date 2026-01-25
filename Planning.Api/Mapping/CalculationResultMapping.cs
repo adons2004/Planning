@@ -8,6 +8,7 @@ public static class CalculationResultMapping
     {
         return new CalculationResponse()
         {
+            Uid = result.Uid,
             Name = result.Name,
             HistoryY0 = result.HistoryY0.ToApi(),
             PlanningY1 = result.PlanningY1.ToApi(),

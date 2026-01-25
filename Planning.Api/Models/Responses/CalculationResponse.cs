@@ -4,6 +4,7 @@ namespace Planning.Models.Responses;
 
 public class CalculationResponse
 {
+    public Guid Uid { get; set; }
     public string Name { get; set; }
     public CalculationResponse[] Children { get; set; }
     

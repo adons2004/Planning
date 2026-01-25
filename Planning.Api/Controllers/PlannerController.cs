@@ -31,7 +31,7 @@ public class PlannerController : Controller
     }
     
     [HttpPatch(WebRoutes.Planner.Update)]
-    public async Task<ActionResult<string>> Update(
+    public async Task Update(
         [FromRoute] Guid subSkuUid, 
         [FromBody] PlannerUpdateRequest model, 
         CancellationToken cancellationToken = default)
@@ -41,7 +41,5 @@ public class PlannerController : Controller
             model.Units,
             model.Amount
         ), cancellationToken);
-        
-        throw new NotImplementedException();
     }
 }
