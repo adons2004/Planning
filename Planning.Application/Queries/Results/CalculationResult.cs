@@ -1,4 +1,5 @@
 using Planning.Domain;
+using Planning.Domain.Abstraction;
 
 namespace Planning.Application.Queries.Results;
 

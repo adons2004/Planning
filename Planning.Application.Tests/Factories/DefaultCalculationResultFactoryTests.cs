@@ -4,6 +4,8 @@ using Planning.Application.Factories;
 using Planning.Application.Queries.Request;
 using Planning.Application.Queries.Results;
 using Planning.Domain;
+using Planning.Domain.Calculations;
+using Planning.Domain.Entities;
 using Xunit;
 
 namespace Planning.Application.Tests.Factories;

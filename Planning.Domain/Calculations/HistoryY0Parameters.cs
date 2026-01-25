@@ -1,10 +1,10 @@
 using Planning.Domain.Contracts;
 
-namespace Planning.Domain;
+namespace Planning.Domain.Calculations;
 
-public class PlanningY1Parameters : IPlanningY1Parameters
+public class HistoryY0Parameters : IHistoryY0Parameters
 {
-    public PlanningY1Parameters(params IPlanningY1Parameters[] parameters)
+    public HistoryY0Parameters(params IHistoryY0Parameters[] parameters)
     {
         var units = parameters.Sum(p => p.Units);
         var amount = parameters.Sum(p => p.Amount);

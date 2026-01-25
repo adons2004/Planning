@@ -1,6 +1,6 @@
 using Planning.Domain.Contracts;
 
-namespace Planning.Domain;
+namespace Planning.Domain.Entities;
 
 public class PlanningY1 : IPlanningY1Parameters
 {

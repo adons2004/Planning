@@ -1,6 +1,7 @@
+using Planning.Domain.Abstraction;
 using Planning.Domain.Contracts;
 
-namespace Planning.Domain;
+namespace Planning.Domain.Entities;
 
 public class SubSku : AbstractSku
 {

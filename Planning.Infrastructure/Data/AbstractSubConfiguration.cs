@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Planning.Domain;
+using Planning.Domain.Abstraction;
 
 namespace Planning.Infrastructure.Data;
 

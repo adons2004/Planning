@@ -1,5 +1,7 @@
 using FluentAssertions;
+using Planning.Domain.Calculations;
 using Planning.Domain.Contracts;
+using Planning.Domain.Entities;
 using Xunit;
 
 namespace Planning.Domain.Tests.Calculations;

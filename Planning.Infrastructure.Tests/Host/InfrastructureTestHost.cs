@@ -2,6 +2,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Planning.Application.Contracts;
 using Planning.Domain.Contracts;
+using Planning.Domain.Entities;
 using Planning.Infrastructure.Data;
 using Planning.Infrastructure.Repositories;
 
@@ -9,7 +10,7 @@ namespace Planning.Infrastructure.Tests.Host;
 
 public class InfrastructureTestHost
 {
-    public readonly ISkuRepository SkuRepository;
+    public readonly IAggregateRepository<Sku> AggregateRepository;
     public InfrastructureTestHost()
     {
         var services = new ServiceCollection();
@@ -19,6 +20,6 @@ public class InfrastructureTestHost
         
         services.AddInfrastructure(configuration);
         
-        SkuRepository = services.BuildServiceProvider().GetRequiredService<ISkuRepository>();
+        AggregateRepository = services.BuildServiceProvider().GetRequiredService<IAggregateRepository<Sku>>();
     }
 }

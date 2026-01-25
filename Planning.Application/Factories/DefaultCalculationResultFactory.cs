@@ -2,6 +2,7 @@ using Planning.Application.Contracts;
 using Planning.Application.Queries.Request;
 using Planning.Application.Queries.Results;
 using Planning.Domain;
+using Planning.Domain.Abstraction;
 
 namespace Planning.Application.Factories;
 

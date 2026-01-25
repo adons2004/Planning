@@ -1,6 +1,7 @@
+using Planning.Domain.Calculations;
 using Planning.Domain.Contracts;
 
-namespace Planning.Domain;
+namespace Planning.Domain.Abstraction;
 
 public abstract class AbstractSku
 {

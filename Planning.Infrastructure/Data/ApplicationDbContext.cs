@@ -2,6 +2,7 @@ using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 using Planning.Domain;
 using Planning.Domain.Contracts;
+using Planning.Domain.Entities;
 
 namespace Planning.Infrastructure.Data;
 

@@ -1,12 +1,12 @@
 using Microsoft.EntityFrameworkCore;
 using Planning.Application.Contracts;
-using Planning.Domain;
-using Planning.Domain.Contracts;
+using Planning.Domain.Abstraction;
+using Planning.Domain.Entities;
 using Planning.Infrastructure.Data;
 
 namespace Planning.Infrastructure.Repositories;
 
-public class SkuRepository : ISkuRepository
+public class SkuRepository : IAggregateRepository<Sku>
 {
     private readonly ApplicationDbContext _dbContext;
 
@@ -21,7 +21,7 @@ public class SkuRepository : ISkuRepository
             .ToArrayAsync(cancellationToken);
     }
 
-    public Task<Sku[]> Get(string[] subSkuName, CancellationToken cancellationToken)
+    public async Task<AbstractSku[]> Get(string[] subSkuName, CancellationToken cancellationToken)
     {
         var queryable = _dbContext.Skus.AsQueryable();
 
@@ -32,7 +32,7 @@ public class SkuRepository : ISkuRepository
                 .Include(s => s.SubSkus.Where(ss => subSkuName.Contains(ss.Name)));
         }
         
-        return queryable.ToArrayAsync(cancellationToken);
+        return await queryable.ToArrayAsync(cancellationToken);
     }
 
     public async Task<Sku> Get(Guid subSkuUid, CancellationToken cancellationToken)

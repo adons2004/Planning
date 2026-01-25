@@ -3,6 +3,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Planning.Application.Contracts;
 using Planning.Domain.Contracts;
+using Planning.Domain.Entities;
 using Planning.Infrastructure.Data;
 using Planning.Infrastructure.Repositories;
 
@@ -26,7 +27,7 @@ public static class ServiceCollectionsExtensions
     
     private static IServiceCollection AddRepositories(this IServiceCollection services)
     {
-        services.AddScoped<ISkuRepository, SkuRepository>();
+        services.AddScoped<IAggregateRepository<Sku>, SkuRepository>();
 
         return services;
     }
