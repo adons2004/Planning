@@ -12,7 +12,6 @@ public class SubSku : AbstractSku
         HistoryY0 = historyY0;
         PlanningY1 = planningY1;
     }
-    public string Name { get; private set;}
     public decimal Price { get; private set;}
     public decimal Ratio { get; private set; }
     public HistoryY0 HistoryY0 { get; private set; }

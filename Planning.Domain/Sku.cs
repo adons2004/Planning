@@ -14,7 +14,6 @@ public class Sku : AbstractSku
         Name = name;
     }
     
-    public string Name { get; private set;}
     public ICollection<SubSku> SubSkus => _subSkus;
 
     public void Add(SubSku subSku)

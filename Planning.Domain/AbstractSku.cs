@@ -5,6 +5,7 @@ namespace Planning.Domain;
 public abstract class AbstractSku
 {
     public Guid Uid { get; protected set; }
+    public string Name { get; protected set; }
     public virtual IHistoryY0Parameters HistoryY0Params {
         get {
             if (_historyY0 is not null)

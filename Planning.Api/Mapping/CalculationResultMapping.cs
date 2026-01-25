@@ -8,8 +8,10 @@ public static class CalculationResultMapping
     {
         return new CalculationResponse()
         {
+            Name = result.Name,
             HistoryY0 = result.HistoryY0.ToApi(),
             PlanningY1 = result.PlanningY1.ToApi(),
+            ContributionGrowth = Math.Round(result.ContributionGrowth, 2),
             Children = result.Children.Select(c => c.ToApi()).ToArray()
         };
     }
@@ -20,7 +22,7 @@ public static class CalculationResultMapping
         {
             Units = result.Units,
             Amount = result.Amount,
-            Price = result.Price
+            Price = Math.Round(result.Price, 2)
         };
     }
     
@@ -30,7 +32,7 @@ public static class CalculationResultMapping
         {
             Units = result.Units,
             Amount = result.Amount,
-            Price = result.Price
+            Price = Math.Round(result.Price, 2)
         };
     }
 }
