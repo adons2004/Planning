@@ -27,7 +27,7 @@ public class SkuRepositoryTests : IClassFixture<InfrastructureTestHost>
     public async Task GetByUidSuccessful()
     {
         // arrange
-        var uid = Guid.Parse("0B1BAB69-C3D8-45A7-9264-AE590EB65E84");
+        var uid = Guid.Parse("ACE57827-9163-43B5-A928-A5325DF0D3E8");
         
         // act
         var sku = await _testHost.SkuRepository.Get(uid, CancellationToken.None);
@@ -41,7 +41,7 @@ public class SkuRepositoryTests : IClassFixture<InfrastructureTestHost>
     public async Task UpdateSuccessful()
     {
         // arrange
-        var uid = Guid.Parse("0B1BAB69-C3D8-45A7-9264-AE590EB65E84");
+        var uid = Guid.Parse("ACE57827-9163-43B5-A928-A5325DF0D3E8");
         var sku = await _testHost.SkuRepository.Get(uid, CancellationToken.None);
         var subSku = sku.SubSkus.First();
         

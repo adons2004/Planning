@@ -2,12 +2,12 @@ using Planning.Domain.Contracts;
 
 namespace Planning.Domain;
 
-public class SubSku : ISku
+public class SubSku : AbstractSku
 {
     private SubSku(){}
-    public SubSku(Guid uid, string name, HistoryY0 historyY0, PlanningY1 planningY1)
+    public SubSku(string name, HistoryY0 historyY0, PlanningY1 planningY1)
     {
-        Uid = uid;
+        Uid = Guid.NewGuid();
         Name = name;
         HistoryY0 = historyY0;
         PlanningY1 = planningY1;
@@ -19,21 +19,7 @@ public class SubSku : ISku
     public HistoryY0 HistoryY0 { get; private set; }
     public PlanningY1 PlanningY1 { get; private set; }
     public Guid SkuUid { get; private set; }
-    
-    
-    public Parameters GetHistoryY0Parameters()
-    {
-        var price = HistoryY0.Amount / HistoryY0.Units;
-        
-        return new Parameters(HistoryY0.Units, price);
-    }
 
-    public Parameters GetPlanningY1Parameters()
-    {
-        var price = PlanningY1.Amount / PlanningY1.Units;
-
-        return new Parameters(PlanningY1.Units, price);
-    }
-
-    public decimal GetContributionGrowth() => ((PlanningY1.Amount - HistoryY0.Amount) / HistoryY0.Amount) * 100;
+    public override IHistoryY0Parameters HistoryY0Params => HistoryY0;
+    public override IPlanningY1Parameters PlanningY1Params  => PlanningY1;
 }

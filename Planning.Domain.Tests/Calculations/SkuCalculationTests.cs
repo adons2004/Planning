@@ -6,7 +6,6 @@ namespace Planning.Domain.Tests.Calculations;
 
 public class SkuCalculationTests
 {
-    /*
     [Fact]
     public void SubSkuCalculationHistoryY0Successful()
     {
@@ -14,9 +13,9 @@ public class SkuCalculationTests
         var sku = DrinksSubSku();
         
         //act
-        var units = sku.GetHistoryY0Parameters().Units;
-        var amount = sku.GetHistoryY0Parameters().Amount;
-        var price = sku.GetHistoryY0Parameters().Price;
+        var units = sku.HistoryY0Params.Units;
+        var amount = sku.HistoryY0Params.Amount;
+        var price = sku.HistoryY0Params.Price;
 
         //assert
         units.Should().Be(3_000);
@@ -31,9 +30,9 @@ public class SkuCalculationTests
         var sku = DrinksSubSku();
         
         //act
-        var units = sku.GetPlanningY1Parameters().Units;
-        var amount = sku.GetPlanningY1Parameters().Amount;
-        var price = sku.GetPlanningY1Parameters().Price;
+        var units = sku.PlanningY1Params.Units;
+        var amount = sku.PlanningY1Params.Amount;
+        var price = sku.PlanningY1Params.Price;
 
         //assert
         units.Should().Be(3_300);
@@ -48,7 +47,7 @@ public class SkuCalculationTests
         var sku = DrinksSubSku();
         
         //act
-        var contributionGrowth = sku.GetContributionGrowth();
+        var contributionGrowth = sku.ContributionGrowth;
 
         //assert
         contributionGrowth.Should().Be(18.875m);
@@ -61,9 +60,9 @@ public class SkuCalculationTests
         var sku = TotalSku();
         
         //act
-        var units = sku.GetHistoryY0Parameters().Units;
-        var amount = sku.GetHistoryY0Parameters().Amount;
-        var price = sku.GetHistoryY0Parameters().Price;
+        var units = sku.HistoryY0Params.Units;
+        var amount = sku.HistoryY0Params.Amount;
+        var price = sku.HistoryY0Params.Price;
 
         //assert
         units.Should().Be(6_000);
@@ -78,9 +77,9 @@ public class SkuCalculationTests
         var sku = TotalSku();
         
         //act
-        var units = sku.GetPlanningY1Parameters().Units;
-        var amount = sku.GetPlanningY1Parameters().Amount;
-        var price = sku.GetPlanningY1Parameters().Price;
+        var units = sku.PlanningY1Params.Units;
+        var amount = sku.PlanningY1Params.Amount;
+        var price = sku.PlanningY1Params.Price;
 
         //assert
         units.Should().Be(6_600);
@@ -95,7 +94,7 @@ public class SkuCalculationTests
         var sku = TotalSku();
         
         //act
-        var contributionGrowth = sku.ContributionGrouth;
+        var contributionGrowth = sku.ContributionGrowth;
 
         //assert
         contributionGrowth.Should().Be(29.052631578947368421052631580m);
@@ -103,10 +102,10 @@ public class SkuCalculationTests
 
     private Sku DrinksSubSku()
     {
-        var coke = new SubSku(Guid.Parse("ACE57827-9163-43B5-A928-A5325DF0D3E8"), "Кола 0.5л", new HistoryY0(1_000, 80m), new PlanningY1(1_200, 85.00m));
-        var water = new SubSku(Guid.Parse("6903EC64-BA3D-4247-8F09-391AAC12A7B9"),"Вода 1.5л", new HistoryY0(2_000, 40m), new PlanningY1(2_100, 42.00m));
+        var coke = new SubSku("Кола 0.5л", new HistoryY0(1_000, 80_000m), new PlanningY1(1_200, 102_000m));
+        var water = new SubSku("Вода 1.5л", new HistoryY0(2_000, 80_000m), new PlanningY1(2_100, 88_200m));
         
-        var sku = new Sku(Guid.Parse("0B1BAB69-C3D8-45A7-9264-AE590EB65E84"),"Напитки");
+        var sku = new Sku("Напитки");
         sku.Add(coke);
         sku.Add(water);
 
@@ -115,26 +114,23 @@ public class SkuCalculationTests
     
     private Sku FoodsSubSku()
     {
-        var coke = new SubSku(Guid.Parse("EC095083-F006-4323-94C7-D467E3637CB7"),"Бургер", new HistoryY0(1_000, 600m), new PlanningY1(1_200, 700m ));
-        var water = new SubSku(Guid.Parse("ADF2C8C4-9BC4-47FE-B66C-49DFFEB71915"),"Картофель-фри", new HistoryY0(2_000, 190m), new PlanningY1(2_100, 210m));
+        var coke = new SubSku("Бургер", new HistoryY0(1_000, 600_000m), new PlanningY1(1_200, 840_000m ));
+        var water = new SubSku("Картофель-фри", new HistoryY0(2_000, 380_000m), new PlanningY1(2_100, 441_000m));
         
-        var sku = new Sku(Guid.Parse("451F4F7A-010D-485B-B90E-6C23B8E65305"),"Еда");
+        var sku = new Sku("Еда");
         sku.Add(coke);
         sku.Add(water);
 
         return sku;
     }
     
-    private Total TotalSku()
+    private TotalSku TotalSku()
     {
         var drinks = DrinksSubSku();
         var foods = FoodsSubSku();
 
-        var sku = new Total();
-        sku.Add(drinks);
-        sku.Add(foods);
+        var sku = new TotalSku(drinks, foods);
         
         return sku;
     }
-    */
 }

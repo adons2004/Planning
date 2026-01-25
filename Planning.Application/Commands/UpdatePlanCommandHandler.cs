@@ -14,7 +14,7 @@ public class UpdatePlanCommandHandler : IRequestHandler<UpdatePlanCommand, Unit>
     
     public async Task<Unit> Handle(UpdatePlanCommand request, CancellationToken cancellationToken)
     {
-        var sku = await _skuRepository.Get(request.SkuUid, cancellationToken);
+        var sku = await _skuRepository.Get(request.SubSkuUid, cancellationToken);
         
         var subSku = sku.SubSkus.Single(s => s.Uid == request.SubSkuUid);
 

@@ -18,11 +18,7 @@ public class CalculateQueryHandler : IRequestHandler<CalculateQuery, CalculateRe
     {
         var skus = await _skuRepository.Get(cancellationToken);
 
-        var total = new Total();
-        foreach (var sku in skus)
-        {
-            total.Add(sku);
-        }
+        var total = new TotalSku(skus);
         
         return new CalculateResult(total);
     }

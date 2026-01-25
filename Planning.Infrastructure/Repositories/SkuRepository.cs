@@ -20,10 +20,11 @@ public class SkuRepository : ISkuRepository
             .ToArrayAsync(cancellationToken);
     }
 
-    public async Task<Sku> Get(Guid id, CancellationToken cancellationToken)
+    public async Task<Sku> Get(Guid subSkuUid, CancellationToken cancellationToken)
     {
         return await _dbContext.Skus
-            .FirstOrDefaultAsync(s => s.Uid == id, cancellationToken) ?? throw new ArgumentException($"Sku {id} not found");
+            .Where(s => s.SubSkus.Any(ss => ss.Uid == subSkuUid))
+            .FirstOrDefaultAsync(cancellationToken) ?? throw new ArgumentException($"Sku {subSkuUid} not found");
     }
 
     public void Update(Sku sku)

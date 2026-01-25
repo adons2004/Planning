@@ -34,10 +34,10 @@ public class SkuConfiguration : IEntityTypeConfiguration<Sku>
                 historyY0Builder.Property(b => b.Units).IsRequired();
 
                 historyY0Builder.HasData(
-                    new { SubSkuUid = cokeUid, Units = 1_000, Amount = 80m },
-                    new { SubSkuUid = waterUid, Units = 2_000, Amount = 40m },
-                    new { SubSkuUid = burgerUid, Units = 1_000, Amount = 600m },
-                    new { SubSkuUid = friesUid, Units = 2_000, Amount = 190m }
+                    new { SubSkuUid = cokeUid, Units = 1_000, Amount = 80_000m },
+                    new { SubSkuUid = waterUid, Units = 2_000, Amount = 20_000m },
+                    new { SubSkuUid = burgerUid, Units = 1_000, Amount = 600_000m },
+                    new { SubSkuUid = friesUid, Units = 2_000, Amount = 380_000m }
                 );
             });
             subSkuBuilder.OwnsOne(e => e.PlanningY1, planningY1Builder =>
@@ -47,10 +47,10 @@ public class SkuConfiguration : IEntityTypeConfiguration<Sku>
                 planningY1Builder.Property(b => b.Units).IsRequired();
                 
                 planningY1Builder.HasData(
-                    new { SubSkuUid = cokeUid, Units = 1_200, Amount = 85.00m },
-                    new { SubSkuUid = waterUid, Units = 2_100, Amount = 42.00m },
-                    new { SubSkuUid = burgerUid, Units = 1_200, Amount = 700m },
-                    new { SubSkuUid = friesUid, Units = 2_100, Amount = 210m }
+                    new { SubSkuUid = cokeUid, Units = 1_200, Amount = 102_000m },
+                    new { SubSkuUid = waterUid, Units = 2_100, Amount = 88_200m },
+                    new { SubSkuUid = burgerUid, Units = 1_200, Amount = 840_000m },
+                    new { SubSkuUid = friesUid, Units = 2_100, Amount = 441_000m }
                 );
             });
             subSkuBuilder.Property(b => b.Ratio).IsRequired();
