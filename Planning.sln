@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Planning", "Planning\Planning.csproj", "{17846C58-B1EF-4510-9EF2-022A74D63283}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Planning.Api", "Planning.Api\Planning.Api.csproj", "{17846C58-B1EF-4510-9EF2-022A74D63283}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{FD1F10F2-69BF-4313-9A35-9DC746842FC1}"
 EndProject

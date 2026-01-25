@@ -11,6 +11,8 @@ public class Total : ISku
     
     public string Name { get; private set; }
 
+    public List<Sku> Skus => _skus;
+    
     public Parameters GetHistoryY0Parameters() => Calculate(_historyY0, s => s.GetHistoryY0Parameters());
     public Parameters GetPlanningY1Parameters() => Calculate(_planningY1, s => s.GetPlanningY1Parameters());
     public decimal GetContributionGrowth() => ((GetPlanningY1Parameters().Amount - GetHistoryY0Parameters().Amount) / GetHistoryY0Parameters().Amount) * 100;
