@@ -1,18 +1,21 @@
 using MediatR;
+using Planning.Application.Contracts;
 using Planning.Application.Queries.Request;
+using Planning.Application.Queries.Results;
 using Planning.Domain;
 using Planning.Domain.Contracts;
-using Planning.Models.Responses;
 
 namespace Planning.Application.Queries;
 
 public class CalculateQueryHandler : IRequestHandler<CalculateQuery, CalculationResult[]>
 {
     private readonly ISkuRepository _skuRepository;
+    private readonly ICalculationResultFactory _calculationResultFactory;
 
-    public CalculateQueryHandler(ISkuRepository skuRepository)
+    public CalculateQueryHandler(ISkuRepository skuRepository, ICalculationResultFactory calculationResultFactory)
     {
         _skuRepository = skuRepository;
+        _calculationResultFactory = calculationResultFactory;
     }
     
     public async Task<CalculationResult[]> Handle(CalculateQuery request, CancellationToken cancellationToken)
@@ -21,12 +24,6 @@ public class CalculateQueryHandler : IRequestHandler<CalculateQuery, Calculation
         
         var total = new TotalSku(skus);
 
-        return request.Level switch
-        {
-            Level.Total => [new CalculationResult(total)],
-            Level.Sku => new CalculationResult(total).Children,
-            Level.SubSku => new CalculationResult(total).Children.SelectMany(c => c.Children).ToArray(),
-            _ => throw new ArgumentOutOfRangeException($"Level {request.Level} not supported")
-        };
+        return _calculationResultFactory.Create(request.Level, total);
     }
 }

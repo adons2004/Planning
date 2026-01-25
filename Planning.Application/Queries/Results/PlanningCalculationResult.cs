@@ -1,6 +1,6 @@
 using Planning.Domain.Contracts;
 
-namespace Planning.Models.Responses;
+namespace Planning.Application.Queries.Results;
 
 public class PlanningCalculationResult
 {

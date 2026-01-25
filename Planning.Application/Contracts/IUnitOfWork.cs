@@ -1,4 +1,4 @@
-namespace Planning.Domain.Contracts;
+namespace Planning.Application.Contracts;
 
 public interface IUnitOfWork
 {

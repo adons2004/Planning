@@ -1,4 +1,6 @@
-namespace Planning.Domain.Contracts;
+using Planning.Domain;
+
+namespace Planning.Application.Contracts;
 
 public interface ISkuRepository : IUnitOfWork
 {

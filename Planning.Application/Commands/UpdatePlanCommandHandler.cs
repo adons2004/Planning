@@ -1,4 +1,5 @@
 using MediatR;
+using Planning.Application.Contracts;
 using Planning.Domain.Contracts;
 
 namespace Planning.Application.Commands;

@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Planning.Application.Contracts;
 using Planning.Domain;
 using Planning.Domain.Contracts;
 using Planning.Infrastructure.Data;

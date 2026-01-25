@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Planning.Application.Contracts;
 using Planning.Domain.Contracts;
 using Planning.Infrastructure.Data;
 using Planning.Infrastructure.Repositories;

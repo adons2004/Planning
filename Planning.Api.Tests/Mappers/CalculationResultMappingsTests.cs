@@ -1,5 +1,6 @@
 using AutoFixture;
 using FluentAssertions;
+using Planning.Application.Queries.Results;
 using Planning.Domain;
 using Planning.Mapping;
 using Planning.Models.Responses;

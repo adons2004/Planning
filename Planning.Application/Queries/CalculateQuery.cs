@@ -1,6 +1,6 @@
 using MediatR;
 using Planning.Application.Queries.Request;
-using Planning.Models.Responses;
+using Planning.Application.Queries.Results;
 
 namespace Planning.Application.Queries;
 
