@@ -20,6 +20,20 @@ public class SkuRepository : ISkuRepository
             .ToArrayAsync(cancellationToken);
     }
 
+    public Task<Sku[]> Get(string[] subSkuName, CancellationToken cancellationToken)
+    {
+        var queryable = _dbContext.Skus.AsQueryable();
+
+        if (subSkuName.Any())
+        {
+            queryable = queryable
+                .Where(s => s.SubSkus.Any(ss => subSkuName.Contains(ss.Name)))
+                .Include(s => s.SubSkus.Where(ss => subSkuName.Contains(ss.Name)));
+        }
+        
+        return queryable.ToArrayAsync(cancellationToken);
+    }
+
     public async Task<Sku> Get(Guid subSkuUid, CancellationToken cancellationToken)
     {
         return await _dbContext.Skus

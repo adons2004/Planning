@@ -4,6 +4,11 @@ namespace Planning.Mapping;
 
 public static class CalculationResultMapping
 {
+    public static CalculationResponse[] ToApi(this CalculationResult[] result)
+    {
+        return result.Select(ToApi).ToArray();
+    }
+    
     public static CalculationResponse ToApi(this CalculationResult result)
     {
         return new CalculationResponse()

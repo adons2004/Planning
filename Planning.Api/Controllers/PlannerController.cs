@@ -20,7 +20,7 @@ public class PlannerController : Controller
     }
 
     [HttpGet]
-    public async Task<CalculationResponse> Calculate(
+    public async Task<CalculationResponse[]> Calculate(
         [FromQuery] string[] skuSubName, 
         [FromQuery] LevelRequest level = LevelRequest.Total, 
         CancellationToken cancellationToken = default)
