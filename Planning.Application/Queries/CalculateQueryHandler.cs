@@ -1,11 +1,11 @@
 using MediatR;
-using Planning.Application.Queries.Results;
 using Planning.Domain;
 using Planning.Domain.Contracts;
+using Planning.Models.Responses;
 
 namespace Planning.Application.Queries;
 
-public class CalculateQueryHandler : IRequestHandler<CalculateQuery, CalculateResult>
+public class CalculateQueryHandler : IRequestHandler<CalculateQuery, CalculationResult>
 {
     private readonly ISkuRepository _skuRepository;
 
@@ -14,12 +14,12 @@ public class CalculateQueryHandler : IRequestHandler<CalculateQuery, CalculateRe
         _skuRepository = skuRepository;
     }
     
-    public async Task<CalculateResult> Handle(CalculateQuery request, CancellationToken cancellationToken)
+    public async Task<CalculationResult> Handle(CalculateQuery request, CancellationToken cancellationToken)
     {
         var skus = await _skuRepository.Get(cancellationToken);
 
         var total = new TotalSku(skus);
-        
-        return new CalculateResult(total);
+
+        return new CalculationResult(total);
     }
 }

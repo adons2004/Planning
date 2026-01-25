@@ -15,21 +15,30 @@ public class SkuConfiguration : IEntityTypeConfiguration<Sku>
         var burgerUid = Guid.Parse("EC095083-F006-4323-94C7-D467E3637CB7");
         var friesUid = Guid.Parse("ADF2C8C4-9BC4-47FE-B66C-49DFFEB71915");
         
-        builder.HasKey(b => b.Uid);
+        //builder.HasKey(b => b.Uid);
         builder.Property(b => b.Uid).IsRequired();
         builder.Property(b => b.Name).IsRequired();
+        builder.Ignore(b => b.HistoryY0Params);
+        builder.Ignore(b => b.PlanningY1Params);
+        builder.Ignore(b => b.ContributionGrowth);
+        builder.Ignore(b => b.Children);
 
         builder.OwnsMany(e => e.SubSkus, subSkuBuilder =>
         {
-            subSkuBuilder.WithOwner().HasForeignKey(b => b.SkuUid);
+            subSkuBuilder.WithOwner(e => e.Sku).HasForeignKey(b => b.SkuUid);
             subSkuBuilder.HasKey(b => b.Uid);
             subSkuBuilder.Property(b => b.Uid).IsRequired();
             subSkuBuilder.Property(b => b.Name).IsRequired();
             subSkuBuilder.Property(b => b.Price).IsRequired();
             subSkuBuilder.Property(b => b.Ratio).IsRequired();
+            subSkuBuilder.Ignore(b => b.HistoryY0Params);
+            subSkuBuilder.Ignore(b => b.PlanningY1Params);
+            subSkuBuilder.Ignore(b => b.ContributionGrowth);
+            subSkuBuilder.Ignore(b => b.Children);
+            
             subSkuBuilder.OwnsOne(e => e.HistoryY0, historyY0Builder =>
             {
-                historyY0Builder.WithOwner().HasForeignKey(b => b.SubSkuUid);
+                historyY0Builder.WithOwner(e => e.SubSku).HasForeignKey(b => b.SubSkuUid);
                 historyY0Builder.Property(b => b.Amount).IsRequired();
                 historyY0Builder.Property(b => b.Units).IsRequired();
 

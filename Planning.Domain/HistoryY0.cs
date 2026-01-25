@@ -20,4 +20,5 @@ public class HistoryY0 : IHistoryY0Parameters
     public decimal Amount { get; private set; }
     public decimal Price => Amount / Units;
     public Guid SubSkuUid { get; private set; }
+    public SubSku SubSku { get; private set; }
 }

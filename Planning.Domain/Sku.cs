@@ -14,9 +14,7 @@ public class Sku : AbstractSku
         Name = name;
     }
     
-    public Guid Uid { get; private set; }
-    public string Name { get; private set; }
-    
+    public string Name { get; private set;}
     public ICollection<SubSku> SubSkus => _subSkus;
 
     public void Add(SubSku subSku)
@@ -24,7 +22,7 @@ public class Sku : AbstractSku
         _subSkus.Add(subSku);
     }
 
-    protected override IReadOnlyCollection<AbstractSku> Children => _subSkus.ToList();
+    public override IReadOnlyCollection<AbstractSku> Children => _subSkus.ToList();
     
     private List<SubSku> _subSkus = new ();
 }

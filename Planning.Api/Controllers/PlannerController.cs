@@ -4,6 +4,7 @@ using Planning.Application.Commands;
 using Planning.Application.Queries;
 using Planning.Mapping;
 using Planning.Models.Requests;
+using Planning.Models.Responses;
 
 namespace Planning.Controllers;
 
@@ -19,14 +20,14 @@ public class PlannerController : Controller
     }
 
     [HttpGet]
-    public async Task<ActionResult<string>> Calculate(
+    public async Task<CalculationResponse> Calculate(
         [FromQuery] string[] skuSubName, 
         [FromQuery] LevelRequest level = LevelRequest.Total, 
         CancellationToken cancellationToken = default)
     {
-        await _mediator.Send(new CalculateQuery(skuSubName, level.ToApplicationLevel()), cancellationToken);
-        
-        throw new NotImplementedException();
+        var result = await _mediator.Send(new CalculateQuery(skuSubName, level.ToApplicationLevel()), cancellationToken);
+
+        return result.ToApi();
     }
     
     [HttpPatch(WebRoutes.Planner.Update)]

@@ -6,6 +6,6 @@ public class TotalSku : AbstractSku
     {
         Skus = skus.ToList();
     }
-    protected override IReadOnlyCollection<AbstractSku> Children => Skus;
+    public override IReadOnlyCollection<AbstractSku> Children => Skus;
     public IReadOnlyCollection<Sku> Skus { get; init; }
 }

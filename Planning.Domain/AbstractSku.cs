@@ -4,6 +4,7 @@ namespace Planning.Domain;
 
 public abstract class AbstractSku
 {
+    public Guid Uid { get; protected set; }
     public virtual IHistoryY0Parameters HistoryY0Params {
         get {
             if (_historyY0 is not null)
@@ -40,7 +41,7 @@ public abstract class AbstractSku
     
     public virtual decimal ContributionGrowth => ((PlanningY1Params.Amount - HistoryY0Params.Amount) / HistoryY0Params.Amount) * 100;
 
-    protected virtual IReadOnlyCollection<AbstractSku> Children { get; }
+    public virtual IReadOnlyCollection<AbstractSku> Children => new List<AbstractSku>();
     
     private IHistoryY0Parameters? _historyY0;
     private IPlanningY1Parameters? _planningY1;

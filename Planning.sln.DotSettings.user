@@ -2,17 +2,20 @@
 	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=7020124F_002D9FFC_002D4AC3_002D8F3D_002DAAB8E0240759_002Ff_003AModelValidator_002Ecs_002Fl_003A_002E_002E_003F_002E_002E_003FAppData_003FRoaming_003FJetBrains_003FRider2025_002E3_003Fresharper_002Dhost_003FSourcesCache_003F86303436289d5f41fb1399a14f24f737f5a0a03b8c5b2e3d76a9df57f732ab5f_003FModelValidator_002Ecs/@EntryIndexedValue">ForceIncluded</s:String>
 	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=7020124F_002D9FFC_002D4AC3_002D8F3D_002DAAB8E0240759_002Ff_003ANumericAssertionsExtensions_002Ecs_002Fl_003AC_0021_003FUsers_003Fanton_003FAppData_003FRoaming_003FJetBrains_003FRider2025_002E2_003Fresharper_002Dhost_003FSourcesCache_003F861e8eae4bd47e02d95bbf4a62e66637c8bcfa743156996571734585491828_003FNumericAssertionsExtensions_002Ecs/@EntryIndexedValue">ForceIncluded</s:String>
 	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=7020124F_002D9FFC_002D4AC3_002D8F3D_002DAAB8E0240759_002Ff_003AServiceProviderServiceExtensions_002Ecs_002Fl_003A_002E_002E_003F_002E_002E_003FAppData_003FRoaming_003FJetBrains_003FRider2025_002E3_003Fresharper_002Dhost_003FSourcesCache_003F621526284d3e4868b98948aff942206525763e57e194a27623b66c384466_003FServiceProviderServiceExtensions_002Ecs/@EntryIndexedValue">ForceIncluded</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=7ce84f90_002D6ae2_002D4e9e_002D860e_002Deb90f45871f3/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Junie Session" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=7ce84f90_002D6ae2_002D4e9e_002D860e_002Deb90f45871f3/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Junie Session" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;xUnit::DB0B3950-C7C2-4667-84CB-49E607C37DA6::net8.0::Planning.Infrastructure.Tests.Repositories.SkuRepositoryTests&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;xUnit::5B404F28-3C01-4703-AAB9-85D22B793BEB::net8.0::Planning.Domain.Tests.Calculations.SkuCalculationTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::7524D9D9-30E3-4FB0-B2B2-5D03D7BFC41E::net8.0::Planning.Api.Tests.Mappers.LevelMappingsTests.LevelMappingSuccessful&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::7524D9D9-30E3-4FB0-B2B2-5D03D7BFC41E::net8.0::Planning.Api.Tests.Mappers.CalculationResultMappingsTests.CalculationResultMappingSuccessful&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=cdf06dc5_002D5e4f_002D4b33_002Db0f0_002D3bb28eda46ae/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="SubSkuCalculationHistoryY0Successful" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=cdf06dc5_002D5e4f_002D4b33_002Db0f0_002D3bb28eda46ae/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="SubSkuCalculationHistoryY0Successful" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;Or&gt;&#xD;
     &lt;ProjectFile&gt;DB0B3950-C7C2-4667-84CB-49E607C37DA6/d:Repositories/f:SkuRepositoryTests.cs&lt;/ProjectFile&gt;&#xD;
     &lt;TestAncestor&gt;&#xD;
       &lt;TestId&gt;xUnit::5B404F28-3C01-4703-AAB9-85D22B793BEB::net8.0::Planning.Domain.Tests.Calculations.SkuCalculationTests&lt;/TestId&gt;&#xD;
+      &lt;TestId&gt;xUnit::7524D9D9-30E3-4FB0-B2B2-5D03D7BFC41E::net8.0::Planning.Api.Tests.Mappers.LevelMappingsTests.LevelMappingSuccessful&lt;/TestId&gt;&#xD;
     &lt;/TestAncestor&gt;&#xD;
   &lt;/Or&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
