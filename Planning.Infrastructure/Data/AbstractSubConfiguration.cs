@@ -1,13 +1,13 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Planning.Domain;
-using Planning.Domain.Abstraction;
+using Planning.Domain.Calculations;
 
 namespace Planning.Infrastructure.Data;
 
-public class AbstractSubConfiguration : IEntityTypeConfiguration<AbstractSku>
+public class AbstractSubConfiguration : IEntityTypeConfiguration<CalculatableSku>
 {
-    public void Configure(EntityTypeBuilder<AbstractSku> builder)
+    public void Configure(EntityTypeBuilder<CalculatableSku> builder)
     {
         builder.HasKey(e => e.Uid);
         builder.Property(e => e.Name).IsRequired();

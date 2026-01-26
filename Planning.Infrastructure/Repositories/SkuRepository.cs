@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Planning.Application.Contracts;
-using Planning.Domain.Abstraction;
+using Planning.Domain.Calculations;
 using Planning.Domain.Entities;
 using Planning.Infrastructure.Data;
 
@@ -21,7 +21,7 @@ public class SkuRepository : IAggregateRepository<Sku>
             .ToArrayAsync(cancellationToken);
     }
 
-    public async Task<AbstractSku[]> Get(string[] subSkuName, CancellationToken cancellationToken)
+    public async Task<CalculatableSku[]> Get(string[] subSkuName, CancellationToken cancellationToken)
     {
         var queryable = _dbContext.Skus.AsQueryable();
 

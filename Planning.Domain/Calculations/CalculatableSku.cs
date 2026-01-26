@@ -1,9 +1,8 @@
-using Planning.Domain.Calculations;
 using Planning.Domain.Contracts;
 
-namespace Planning.Domain.Abstraction;
+namespace Planning.Domain.Calculations;
 
-public abstract class AbstractSku
+public abstract class CalculatableSku
 {
     public Guid Uid { get; protected set; }
     public string Name { get; protected set; }
@@ -43,7 +42,7 @@ public abstract class AbstractSku
     
     public virtual decimal ContributionGrowth => ((PlanningY1Params.Amount - HistoryY0Params.Amount) / HistoryY0Params.Amount) * 100;
 
-    public virtual IReadOnlyCollection<AbstractSku> Children => new List<AbstractSku>();
+    public virtual IReadOnlyCollection<CalculatableSku> Children => new List<CalculatableSku>();
     
     private IHistoryY0Parameters? _historyY0;
     private IPlanningY1Parameters? _planningY1;

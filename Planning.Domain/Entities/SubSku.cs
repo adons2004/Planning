@@ -1,9 +1,9 @@
-using Planning.Domain.Abstraction;
+using Planning.Domain.Calculations;
 using Planning.Domain.Contracts;
 
 namespace Planning.Domain.Entities;
 
-public class SubSku : AbstractSku
+public class SubSku : CalculatableSku
 {
     private SubSku(){}
     public SubSku(string name, HistoryY0 historyY0, PlanningY1 planningY1)

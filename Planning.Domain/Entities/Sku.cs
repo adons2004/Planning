@@ -1,8 +1,8 @@
-using Planning.Domain.Abstraction;
+using Planning.Domain.Calculations;
 
 namespace Planning.Domain.Entities;
 
-public class Sku : AbstractSku
+public class Sku : CalculatableSku
 {
     private Sku()
     {
@@ -50,7 +50,7 @@ public class Sku : AbstractSku
         }
     }
     
-    public override IReadOnlyCollection<AbstractSku> Children => _subSkus.ToList();
+    public override IReadOnlyCollection<CalculatableSku> Children => _subSkus.ToList();
     
     private List<SubSku> _subSkus = new ();
 }

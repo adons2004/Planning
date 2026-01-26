@@ -1,5 +1,5 @@
 using Planning.Domain;
-using Planning.Domain.Abstraction;
+using Planning.Domain.Calculations;
 
 namespace Planning.Application.Queries.Results;
 
@@ -9,7 +9,7 @@ public class CalculationResult
     {
         
     }
-    public CalculationResult(AbstractSku sku)
+    public CalculationResult(CalculatableSku sku)
     {
         Uid = sku.Uid;
         Name = sku.Name;

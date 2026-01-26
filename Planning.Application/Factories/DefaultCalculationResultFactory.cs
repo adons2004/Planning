@@ -2,13 +2,13 @@ using Planning.Application.Contracts;
 using Planning.Application.Queries.Request;
 using Planning.Application.Queries.Results;
 using Planning.Domain;
-using Planning.Domain.Abstraction;
+using Planning.Domain.Calculations;
 
 namespace Planning.Application.Factories;
 
 public class DefaultCalculationResultFactory : ICalculationResultFactory
 {
-    public CalculationResult[] Create(Level level, AbstractSku sku)
+    public CalculationResult[] Create(Level level, CalculatableSku sku)
     {
         return level switch
         {
