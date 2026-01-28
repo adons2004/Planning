@@ -4,4 +4,4 @@ using Planning.Application.Queries.Results;
 
 namespace Planning.Application.Queries;
 
-public sealed record CalculateQuery(string[] SkuSubName, Level Level) : IRequest<CalculationResult[]>;
+public sealed record CalculateQuery(string[] SkuSubName, Level Level) : IRequest<CalculationResult>;

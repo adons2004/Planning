@@ -9,7 +9,7 @@ using Planning.Domain.Entities;
 
 namespace Planning.Application.Queries;
 
-public class CalculateQueryHandler : IRequestHandler<CalculateQuery, CalculationResult[]>
+public class CalculateQueryHandler : IRequestHandler<CalculateQuery, CalculationResult>
 {
     private readonly IAggregateRepository<Sku> _aggregateRepository;
     private readonly ICalculationResultFactory _calculationResultFactory;
@@ -22,12 +22,14 @@ public class CalculateQueryHandler : IRequestHandler<CalculateQuery, Calculation
         _calculationResultFactory = calculationResultFactory;
     }
     
-    public async Task<CalculationResult[]> Handle(CalculateQuery request, CancellationToken cancellationToken)
+    public async Task<CalculationResult> Handle(CalculateQuery request, CancellationToken cancellationToken)
     {
         var skus = await _aggregateRepository.Get(request.SkuSubName, cancellationToken);
         
         var total = new TotalSku(skus);
 
-        return _calculationResultFactory.Create(request.Level, total);
+        var data = _calculationResultFactory.Create(request.Level, total);
+
+        return new CalculationResult(data, []);
     }
 }

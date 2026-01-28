@@ -19,8 +19,8 @@ public class CalculationResultMappingsTests
     public void CalculationResultMappingSuccessful()
     {
         // arrange
-        var result = CreateResult(CreateResult(CreateResult(), CreateResult()), CreateResult());
-            
+        var resultData = CreateResult(CreateResult(CreateResult(), CreateResult()), CreateResult());
+        var result = new CalculationResult([resultData], []);
         // act
         var response = result.ToApi();
         
@@ -28,9 +28,9 @@ public class CalculationResultMappingsTests
         response.Should().BeEquivalentTo(result, options => options.WithStrictOrdering());
     }
 
-    private CalculationResult CreateResult(params CalculationResult[] children)
+    private CalculationDataResult CreateResult(params CalculationDataResult[] children)
     {
-        return new CalculationResult()
+        return new CalculationDataResult()
         {
             HistoryY0 = new HistoryCalculationResult()
             {

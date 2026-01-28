@@ -8,13 +8,13 @@ namespace Planning.Application.Factories;
 
 public class DefaultCalculationResultFactory : ICalculationResultFactory
 {
-    public CalculationResult[] Create(Level level, CalculatableSku sku)
+    public CalculationDataResult[] Create(Level level, CalculatableSku sku)
     {
         return level switch
         {
-            Level.Total => [new CalculationResult(sku)],
-            Level.Sku => new CalculationResult(sku).Children,
-            Level.SubSku => new CalculationResult(sku).Children.SelectMany(c => c.Children).ToArray(),
+            Level.Total => [new CalculationDataResult(sku)],
+            Level.Sku => new CalculationDataResult(sku).Children,
+            Level.SubSku => new CalculationDataResult(sku).Children.SelectMany(c => c.Children).ToArray(),
             _ => throw new ArgumentOutOfRangeException($"Level {level} not supported")
         };
     }
