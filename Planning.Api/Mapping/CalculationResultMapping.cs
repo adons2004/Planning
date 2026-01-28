@@ -30,6 +30,12 @@ public static class CalculationResultMapping
     {
         return new CalculationMetadataResponse()
         {
+            Uid = metadataResult.Uid,
+            Name = metadataResult.Name.ToApi(),
+            HistoryY0 = metadataResult.HistoryY0.ToApi(),
+            PlanningY1 = metadataResult.PlanningY1.ToApi(),
+            ContributionGrowth = metadataResult.ContributionGrowth.ToApi(),
+            Children = metadataResult.Children.Select(c => c.ToApi()).ToArray()
         };
     }
     
@@ -50,6 +56,35 @@ public static class CalculationResultMapping
             Units = result.Units,
             Amount = result.Amount,
             Price = Math.Round(result.Price, 2)
+        };
+    }
+
+    private static HistoryMetadataResponse ToApi(this HistoryMetadataResult result)
+    {
+        return new HistoryMetadataResponse()
+        {
+            Units = result.Units.ToApi(),
+            Amount = result.Amount.ToApi(),
+            Price = result.Price.ToApi()
+        };
+    }
+    
+    private static PlanningMetadataResponse ToApi(this PlanningMetadataResult result)
+    {
+        return new PlanningMetadataResponse()
+        {
+            Units = result.Units.ToApi(),
+            Amount = result.Amount.ToApi(),
+            Price = result.Price.ToApi()
+        };
+    }
+    
+    private static FieldMetadataResponse ToApi(this FieldMetadataResult metadata)
+    {
+        return new FieldMetadataResponse()
+        {
+            IsEditable = metadata.IsEditable,
+            Type = metadata.Type
         };
     }
 }

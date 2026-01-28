@@ -1,3 +1,4 @@
+using Planning.Domain.Attributes;
 using Planning.Domain.Contracts;
 
 namespace Planning.Domain.Calculations;
@@ -11,7 +12,10 @@ public class PlanningY1Parameters : IPlanningY1Parameters
         Price = price;
     }
     
+    [Metadata(false, "int")]
     public int Units { get; }
+    [Metadata(false, "decimal")]
     public decimal Amount { get; }
+    [Metadata(false, "decimal")]
     public decimal Price { get; }
 }

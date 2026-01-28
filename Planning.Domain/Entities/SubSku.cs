@@ -1,3 +1,4 @@
+using Planning.Domain.Attributes;
 using Planning.Domain.Calculations;
 using Planning.Domain.Contracts;
 
@@ -20,7 +21,9 @@ public class SubSku : CalculatableSku
         Price = price;
         Ratio = ratio;
     }
+    [Metadata(false, "decimal")]
     public decimal Price { get; private set;}
+    [Metadata(false, "decimal")]
     public decimal Ratio { get; private set; }
     public HistoryY0 HistoryY0 { get; private set; }
     public PlanningY1 PlanningY1 { get; private set; }
@@ -38,7 +41,7 @@ public class SubSku : CalculatableSku
                 return _planningY1;
             }
 
-            _planningY1 = new PlanningY1Parameters(PlanningY1.Units, PlanningY1.Amount, Price);
+            _planningY1 = new PlanningY1SubSkuParameters(PlanningY1.Units, PlanningY1.Amount, Price);
 
             return _planningY1;
         }

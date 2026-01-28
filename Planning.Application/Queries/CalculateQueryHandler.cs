@@ -28,8 +28,8 @@ public class CalculateQueryHandler : IRequestHandler<CalculateQuery, Calculation
         
         var total = new TotalSku(skus);
 
-        var data = _calculationResultFactory.Create(request.Level, total);
+        var result = _calculationResultFactory.Create(request.Level, total);
 
-        return new CalculationResult(data, []);
+        return result;
     }
 }

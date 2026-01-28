@@ -7,5 +7,5 @@ namespace Planning.Application.Contracts;
 
 public interface ICalculationResultFactory
 {
-    CalculationDataResult[] Create(Level level, CalculatableSku sku);
+    CalculationResult Create(Level level, CalculatableSku sku);
 }

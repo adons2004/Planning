@@ -3,19 +3,18 @@ using Planning.Domain.Contracts;
 
 namespace Planning.Domain.Calculations;
 
-public class HistoryY0Parameters : IHistoryY0Parameters
+public class PlanningY1SubSkuParameters : IPlanningY1Parameters
 {
-
-    public HistoryY0Parameters(int units, decimal amount, decimal price)
+    public PlanningY1SubSkuParameters(int units, decimal amount, decimal price)
     {
         Units = units;
         Amount = amount;
         Price = price;
     }
-
-    [Metadata(false, "int")]
+    
+    [Metadata(true, "int")]
     public int Units { get; }
-    [Metadata(false, "decimal")]
+    [Metadata(true, "decimal")]
     public decimal Amount { get; }
     [Metadata(false, "decimal")]
     public decimal Price { get; }

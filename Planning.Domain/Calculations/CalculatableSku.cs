@@ -1,3 +1,4 @@
+using Planning.Domain.Attributes;
 using Planning.Domain.Contracts;
 
 namespace Planning.Domain.Calculations;
@@ -5,11 +6,13 @@ namespace Planning.Domain.Calculations;
 public abstract class CalculatableSku
 {
     public Guid Uid { get; protected set; }
+    [Metadata(false, "string")]
     public string Name { get; protected set; }
     public virtual IHistoryY0Parameters HistoryY0Params => _historyY0;
 
     public virtual IPlanningY1Parameters PlanningY1Params => _planningY1;
 
+    [Metadata(false, "decimal")]
     public virtual decimal ContributionGrowth
     {
         get

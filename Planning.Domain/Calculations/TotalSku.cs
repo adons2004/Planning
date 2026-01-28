@@ -1,3 +1,4 @@
+using Planning.Domain.Attributes;
 using Planning.Domain.Contracts;
 
 namespace Planning.Domain.Calculations;
@@ -56,6 +57,7 @@ public class TotalSku : CalculatableSku
         }
     }
     
+    [Metadata(false, "decimal")]
     public override decimal ContributionGrowth => ((PlanningY1Params.Amount - HistoryY0Params.Amount) / HistoryY0Params.Amount) * 100;
 
     public override IReadOnlyCollection<CalculatableSku> Children => _skus;
