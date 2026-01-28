@@ -30,7 +30,9 @@ public class SkuCalculationBenchmarks
             var drink = new SubSku(
                 _fixture.Create<string>(),
                 new HistoryY0(_fixture.Create<int>(), _fixture.Create<decimal>()),
-                new PlanningY1(_fixture.Create<int>(), _fixture.Create<decimal>()));
+                new PlanningY1(_fixture.Create<int>(), _fixture.Create<decimal>()),
+                _fixture.Create<decimal>(),
+                _fixture.Create<decimal>());
             sku.Add(drink);
             count++;
         }
@@ -48,7 +50,9 @@ public class SkuCalculationBenchmarks
             var drink = new SubSku(
                 _fixture.Create<string>(),
                 new HistoryY0(_fixture.Create<int>(), _fixture.Create<decimal>()),
-                new PlanningY1(_fixture.Create<int>(), _fixture.Create<decimal>()));
+                new PlanningY1(_fixture.Create<int>(), _fixture.Create<decimal>()),
+                _fixture.Create<decimal>(),
+                _fixture.Create<decimal>());
             sku.Add(drink);
             count++;
         }

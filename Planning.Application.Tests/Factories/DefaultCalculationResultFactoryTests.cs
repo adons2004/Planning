@@ -33,11 +33,10 @@ public class DefaultCalculationResultFactoryTests
         // assert
         actions.ForEach(action => action.Should().NotThrow<ArgumentOutOfRangeException>());
     }
-    
     private Sku DrinksSubSku()
     {
-        var coke = new SubSku("Кола 0.5л", new HistoryY0(1_000, 80_000m), new PlanningY1(1_200, 102_000m));
-        var water = new SubSku("Вода 1.5л", new HistoryY0(2_000, 80_000m), new PlanningY1(2_100, 88_200m));
+        var coke = new SubSku("Кола 0.5л", new HistoryY0(1_000, 80_000m), new PlanningY1(1_200, 102_000m), 85m, 1);
+        var water = new SubSku("Вода 1.5л", new HistoryY0(2_000, 80_000m), new PlanningY1(2_100, 88_200m), 42m, 1);
         
         var sku = new Sku("Напитки");
         sku.Add(coke);
@@ -48,8 +47,8 @@ public class DefaultCalculationResultFactoryTests
     
     private Sku FoodsSubSku()
     {
-        var coke = new SubSku("Бургер", new HistoryY0(1_000, 600_000m), new PlanningY1(1_200, 840_000m ));
-        var water = new SubSku("Картофель-фри", new HistoryY0(2_000, 380_000m), new PlanningY1(2_100, 441_000m));
+        var coke = new SubSku("Бургер", new HistoryY0(1_000, 600_000m), new PlanningY1(1_200, 840_000m ), 700m, 1);
+        var water = new SubSku("Картофель-фри", new HistoryY0(2_000, 380_000m), new PlanningY1(2_100, 441_000m), 210m, 1);
         
         var sku = new Sku("Еда");
         sku.Add(coke);
@@ -57,7 +56,7 @@ public class DefaultCalculationResultFactoryTests
 
         return sku;
     }
-    
+
     private TotalSku TotalSku()
     {
         var drinks = DrinksSubSku();
