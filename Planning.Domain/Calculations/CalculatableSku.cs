@@ -6,44 +6,39 @@ public abstract class CalculatableSku
 {
     public Guid Uid { get; protected set; }
     public string Name { get; protected set; }
-    public virtual IHistoryY0Parameters HistoryY0Params {
-        get {
-            if (_historyY0 is not null)
+    public virtual IHistoryY0Parameters HistoryY0Params => _historyY0;
+
+    public virtual IPlanningY1Parameters PlanningY1Params => _planningY1;
+
+    public virtual decimal ContributionGrowth
+    {
+        get
+        {
+            if (_contributionGrowth.HasValue)
             {
-                return _historyY0;
+                return _contributionGrowth.Value;
             }
-
-            var parameters = Children
-                .Select(s => s.HistoryY0Params)
-                .ToArray();
-        
-            _historyY0 = new HistoryY0Parameters(parameters);
-
-            return _historyY0;
+            
+            if (ParentCalculatable is null)
+            {
+                throw new InvalidOperationException("Parent sku is null");
+            }
+            
+            return ((PlanningY1Params.Amount - HistoryY0Params.Amount) / ParentCalculatable.HistoryY0Params.Amount) * 100;
         }
     }
-    
-    public virtual IPlanningY1Parameters PlanningY1Params {
-        get {
-            if (_planningY1 is not null)
-            {
-                return _planningY1;
-            }
-
-            var parameters = Children
-                .Select(s => s.PlanningY1Params)
-                .ToArray();
-        
-            _planningY1 = new PlanningY1Parameters(parameters);
-
-            return _planningY1;
-        }
-    }
-    
-    public virtual decimal ContributionGrowth => ((PlanningY1Params.Amount - HistoryY0Params.Amount) / HistoryY0Params.Amount) * 100;
 
     public virtual IReadOnlyCollection<CalculatableSku> Children => new List<CalculatableSku>();
     
-    private IHistoryY0Parameters? _historyY0;
-    private IPlanningY1Parameters? _planningY1;
+    public virtual CalculatableSku? ParentCalculatable => _parentCalculatable;
+    
+    public void SetParentCalculatable(CalculatableSku parentCalculatable)
+    {
+        _parentCalculatable = parentCalculatable;
+    }
+    
+    protected IHistoryY0Parameters? _historyY0;
+    protected IPlanningY1Parameters? _planningY1;
+    protected decimal? _contributionGrowth;
+    private CalculatableSku? _parentCalculatable;
 }

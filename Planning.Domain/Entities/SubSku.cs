@@ -6,12 +6,19 @@ namespace Planning.Domain.Entities;
 public class SubSku : CalculatableSku
 {
     private SubSku(){}
-    public SubSku(string name, HistoryY0 historyY0, PlanningY1 planningY1)
+    public SubSku(
+        string name, 
+        HistoryY0 historyY0, 
+        PlanningY1 planningY1,
+        decimal price,
+        decimal ratio)
     {
         Uid = Guid.NewGuid();
         Name = name;
         HistoryY0 = historyY0;
         PlanningY1 = planningY1;
+        Price = price;
+        Ratio = ratio;
     }
     public decimal Price { get; private set;}
     public decimal Ratio { get; private set; }
@@ -21,5 +28,21 @@ public class SubSku : CalculatableSku
     public Sku Sku { get; private set; }
 
     public override IHistoryY0Parameters HistoryY0Params => HistoryY0;
-    public override IPlanningY1Parameters PlanningY1Params  => PlanningY1;
+
+    public override IPlanningY1Parameters PlanningY1Params
+    {
+        get
+        {
+            if (_planningY1 is not null)
+            {
+                return _planningY1;
+            }
+
+            _planningY1 = new PlanningY1Parameters(PlanningY1.Units, PlanningY1.Amount, Price);
+
+            return _planningY1;
+        }
+    }
+
+    public override CalculatableSku? ParentCalculatable => base.ParentCalculatable ?? Sku;
 }

@@ -15,6 +15,7 @@ public class SkuConfiguration : IEntityTypeConfiguration<Sku>
         builder.Ignore(b => b.PlanningY1Params);
         builder.Ignore(b => b.ContributionGrowth);
         builder.Ignore(b => b.Children);
+        builder.Ignore(b => b.ParentCalculatable);
 
         builder.OwnsMany(e => e.SubSkus, subSkuBuilder =>
         {
@@ -28,6 +29,7 @@ public class SkuConfiguration : IEntityTypeConfiguration<Sku>
             subSkuBuilder.Ignore(b => b.PlanningY1Params);
             subSkuBuilder.Ignore(b => b.ContributionGrowth);
             subSkuBuilder.Ignore(b => b.Children);
+            subSkuBuilder.Ignore(b => b.ParentCalculatable);
             
             subSkuBuilder.OwnsOne(e => e.HistoryY0, historyY0Builder =>
             {

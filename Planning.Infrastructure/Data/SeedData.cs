@@ -22,32 +22,32 @@ public static class SeedData
             Uid = cokeUid,
             Name = "Кола 0.5л",
             SkuUid = drinksSkuUid,
-            Price = 0m,
-            Ratio = 0m
+            Price = 80m,
+            Ratio = 0.4m
         };
         yield return new
         {
             Uid = waterUid,
             Name = "Вода 1.5л",
             SkuUid = drinksSkuUid,
-            Price = 0m,
-            Ratio = 0m
+            Price = 40m,
+            Ratio = 0.8m
         };
         yield return new
         {
             Uid = burgerUid,
             Name = "Бургер",
             SkuUid = foodsSkuUid,
-            Price = 0m,
-            Ratio = 0m
+            Price = 600m,
+            Ratio = 0.7m
         };
         yield return new
         {
             Uid = friesUid,
             Name = "Картофель-фри",
             SkuUid = foodsSkuUid,
-            Price = 0m,
-            Ratio = 0m
+            Price = 190m,
+            Ratio = 0.5m
         };
     }
 

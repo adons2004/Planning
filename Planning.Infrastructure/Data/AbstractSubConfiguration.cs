@@ -15,5 +15,6 @@ public class AbstractSubConfiguration : IEntityTypeConfiguration<CalculatableSku
         builder.Ignore(b => b.PlanningY1Params);
         builder.Ignore(b => b.ContributionGrowth);
         builder.Ignore(b => b.Children);
+        builder.Ignore(b => b.ParentCalculatable);
     }
 }
