@@ -4,6 +4,8 @@ public class CalculationMetadataResponse
 {
     
     public Guid Uid { get; set; }
+    public string Type { get; set; }
+    public string[] ValueTypes { get; set; }
     public FieldMetadataResponse Name { get; set; }
     public CalculationMetadataResponse[] Children { get; set; }
     

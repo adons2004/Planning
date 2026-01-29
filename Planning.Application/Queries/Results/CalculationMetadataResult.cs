@@ -12,6 +12,8 @@ public class CalculationMetadataResult
             .ToDictionary(p => p.Name, p => p.GetCustomAttribute<MetadataAttribute>());
         
         Uid = sku.Uid;
+        Type = sku.GetType().Name;
+        ValueTypes = CalculatableSku.ValueTypes;
         Name = new FieldMetadataResult(properties[nameof(CalculatableSku.Name)]!);
         HistoryY0 = new HistoryMetadataResult(sku.HistoryY0Params);
         PlanningY1 = new PlanningMetadataResult(sku.PlanningY1Params);
@@ -20,6 +22,8 @@ public class CalculationMetadataResult
     }
     
     public Guid Uid { get; set; }
+    public string Type { get; set; }
+    public string[] ValueTypes { get; set; }
     public FieldMetadataResult Name { get; set; }
     public CalculationMetadataResult[] Children { get; set; }
     public HistoryMetadataResult HistoryY0 { get; set; } 

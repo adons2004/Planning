@@ -8,7 +8,9 @@ public class FieldMetadataResult
     {
         IsEditable = metadata.IsEditable;
         Type = metadata.Type;
+        Color = metadata.Color;
     }
     public bool IsEditable { get; set; }
     public string Type { get; set; }
+    public string Color { get; set; }
 }

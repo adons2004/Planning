@@ -31,6 +31,8 @@ public static class CalculationResultMapping
         return new CalculationMetadataResponse()
         {
             Uid = metadataResult.Uid,
+            Type = metadataResult.Type,
+            ValueTypes = metadataResult.ValueTypes,
             Name = metadataResult.Name.ToApi(),
             HistoryY0 = metadataResult.HistoryY0.ToApi(),
             PlanningY1 = metadataResult.PlanningY1.ToApi(),
@@ -84,7 +86,8 @@ public static class CalculationResultMapping
         return new FieldMetadataResponse()
         {
             IsEditable = metadata.IsEditable,
-            Type = metadata.Type
+            Type = metadata.Type,
+            Color = metadata.Color
         };
     }
 }

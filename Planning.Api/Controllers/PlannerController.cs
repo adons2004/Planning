@@ -30,14 +30,13 @@ public class PlannerController : Controller
         return result.ToApi();
     }
     
-    [HttpPatch(WebRoutes.Planner.Update)]
+    [HttpPatch]
     public async Task Update(
-        [FromRoute] Guid subSkuUid, 
         [FromBody] PlannerUpdateRequest model, 
         CancellationToken cancellationToken = default)
     {
         await _mediator.Send(new UpdatePlanCommand(
-            subSkuUid,
+            model.SubSkuUid,
             model.Units,
             model.Amount
         ), cancellationToken);

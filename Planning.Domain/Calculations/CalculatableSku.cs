@@ -5,9 +5,17 @@ namespace Planning.Domain.Calculations;
 
 public abstract class CalculatableSku
 {
+    static CalculatableSku()
+    {
+        var historyParameters = typeof(IHistoryY0Parameters).GetProperties().Select(p => p.Name).ToArray();
+        var planningParameters = typeof(IPlanningY1Parameters).GetProperties().Select(p => p.Name).ToArray();
+        _valueTypes = historyParameters.Concat(planningParameters).Distinct().ToArray();
+    }
+    
     public Guid Uid { get; protected set; }
     [Metadata(false, "string")]
     public string Name { get; protected set; }
+    public static string[] ValueTypes => _valueTypes;
     public virtual IHistoryY0Parameters HistoryY0Params => _historyY0;
 
     public virtual IPlanningY1Parameters PlanningY1Params => _planningY1;
@@ -44,4 +52,5 @@ public abstract class CalculatableSku
     protected IPlanningY1Parameters? _planningY1;
     protected decimal? _contributionGrowth;
     private CalculatableSku? _parentCalculatable;
+    private static string[] _valueTypes;
 }
